@@ -15,16 +15,17 @@ build:
 requirements:
   build:
     - {{ compiler("cxx") }}
-    - {{ compiler("rust") }}
     - {{ stdlib("c") }}
-    - cargo-bundle-licenses
+    - cmake
+    - ninja
     - pip
     - python
-    - maturin >=1.2.0,<2
+    - scikit-build-core >=0.11
   host:
     - pip
     - python
-    - maturin >=1.2.0,<2
+    - scikit-build-core >=0.11
+    - pybind11 >=2.6
   run:
     - numpy >=1.16.0
     - python
@@ -42,7 +43,6 @@ about:
   summary: Python efficient farthest point sampling (FPS) library
   license: MIT
   license_file:
-    - THIRDPARTY.yml
     - LICENSE
 
 extra:

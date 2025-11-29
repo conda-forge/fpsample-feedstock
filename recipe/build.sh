@@ -5,7 +5,7 @@ set -ex
 # cd fpsample-${PKG_VERSION}
 
 # Generate license file
-cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+# cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
 
 # Build and install the package
 ${PYTHON} -m pip install . -vv --no-deps --no-build-isolation
