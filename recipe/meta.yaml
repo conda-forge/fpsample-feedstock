@@ -28,10 +28,10 @@ requirements:
     - scikit-build-core >=0.11
     - pybind11 >=2.6
     - numpy
-    - cmake
   run:
     - numpy >=1.16.0
     - python
+    - pybind11 >=2.6
 
 test:
   imports:
