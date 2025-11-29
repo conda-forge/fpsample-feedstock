@@ -7,5 +7,7 @@ set -ex
 # Generate license file
 # cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
 
+export CMAKE_GENERATOR=Ninja
+
 # Build and install the package
 ${PYTHON} -m pip install . -vv --no-deps --no-build-isolation

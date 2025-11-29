@@ -18,6 +18,7 @@ requirements:
     - {{ stdlib("c") }}
     - cmake
     - ninja
+    - make
     - pip
     - python
     - scikit-build-core >=0.11
