@@ -1,36 +1,38 @@
 {% set name = "fpsample" %}
-{% set version = "0.3.3" %}
+{% set version = "1.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  - url: https://github.com/leonardodalinky/fpsample/archive/v{{ version }}.tar.gz
-    sha256: ccb2c1c21f1bf6ed51634d0164f7cd3dfd3f0d3ea761e8567beebca6d92b78e1
+  url: https://github.com/leonardodalinky/fpsample/archive/v{{ version }}.tar.gz
+  sha256: 2080072542064965d97bb5e1bf283b95e1181ba13dc2a14fbdcea8a691904bc8
 
 build:
-  number: 2
-  script:
-    - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
-    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
 
 requirements:
   build:
     - {{ compiler("cxx") }}
-    - {{ compiler("rust") }}
     - {{ stdlib("c") }}
-    - cargo-bundle-licenses
+    - cmake
+    - ninja
+    - make  # [unix]
     - pip
     - python
-    - maturin >=1.2.0,<2
+    - scikit-build-core >=0.11
   host:
     - pip
     - python
-    - maturin >=1.2.0,<2
+    - scikit-build-core >=0.11
+    - pybind11 >=2.10
+    - numpy
+    - cmake  # [win]
   run:
     - numpy >=1.16.0
     - python
+    - pybind11 >=2.10
 
 test:
   imports:
@@ -45,7 +47,6 @@ about:
   summary: Python efficient farthest point sampling (FPS) library
   license: MIT
   license_file:
-    - THIRDPARTY.yml
     - LICENSE
 
 extra:
