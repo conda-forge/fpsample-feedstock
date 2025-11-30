@@ -1,0 +1,12 @@
+--- src/lib.cpp
++++ src/lib.cpp
+@@ -4,6 +4,10 @@
+ #include "nanoflann.hpp"
+ #include "wrapper.hpp"
+
++#ifdef _MSC_VER
++typedef Py_ssize_t ssize_t;
++#endif
++
+ #define STRINGIFY(x) #x
+ #define MACRO_STRINGIFY(x) STRINGIFY(x)

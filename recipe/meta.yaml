@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/leonardodalinky/fpsample/archive/v{{ version }}.tar.gz
   sha256: 2080072542064965d97bb5e1bf283b95e1181ba13dc2a14fbdcea8a691904bc8
+  patches:
+    - patches/0001-Add-ssize_t-typedef-for-MSVC.patch
 
 build:
   number: 0
