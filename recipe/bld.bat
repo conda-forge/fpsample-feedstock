@@ -1,9 +1,7 @@
-copy src\lib.cpp src\lib.cpp.orig
-echo #if defined(_MSC_VER) > src\lib.cpp
-echo #include ^<cstddef^> >> src\lib.cpp
-echo typedef std::ptrdiff_t ssize_t; >> src\lib.cpp
-echo #endif >> src\lib.cpp
-type src\lib.cpp.orig >> src\lib.cpp
+%PYTHON% -c "lines = open('src/lib.cpp').readlines(); lines.insert(0, '#if defined(_MSC_VER)\n#include <cstddef>\ntypedef std::ptrdiff_t ssize_t;\n#endif\n'); open('src/lib.cpp', 'w').writelines(lines)"
+
+echo "Content of src/lib.cpp after modification:"
+type src\lib.cpp
 
 set CMAKE_PREFIX_PATH=%LIBRARY_PREFIX%
 %PYTHON% -m pip install . --no-deps --no-build-isolation
