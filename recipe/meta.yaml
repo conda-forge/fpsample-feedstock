@@ -1,5 +1,5 @@
 {% set name = "fpsample" %}
-{% set version = "1.0.0" %}
+{% set version = "1.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/leonardodalinky/fpsample/archive/v{{ version }}.tar.gz
-  sha256: 2080072542064965d97bb5e1bf283b95e1181ba13dc2a14fbdcea8a691904bc8
+  sha256: 0df8335a7b6b7da5e9cf6b43fa652813b5fbf4253663a9aa2476b2e19e7de5bb
 
 build:
   number: 0
