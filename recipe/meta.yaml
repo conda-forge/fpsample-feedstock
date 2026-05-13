@@ -39,6 +39,7 @@ test:
     - fpsample
   commands:
     - pip check
+    - python -c "import numpy as np; import fpsample; pc = np.array([[0., 0., 0.], [1., 0., 0.], [0., 1., 0.], [0., 0., 1.], [1., 1., 1.]]); idx = np.asarray(fpsample.bucket_fps_kdline_sampling(pc, 3, h=2, start_idx=0)); assert idx.shape == (3,); assert len(set(idx.tolist())) == 3; assert np.all((0 <= idx) & (idx < len(pc)))"
   requires:
     - pip
 
