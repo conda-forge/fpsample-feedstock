@@ -1,0 +1,74 @@
+schema_version: 1
+
+context:
+  name: fpsample
+  version: "1.0.2"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/leonardodalinky/fpsample/archive/v${{ version }}.tar.gz
+  sha256: d734aac0873907f8d58aa07ae7336f0aecefb1338bdfd262831c80aeded75201
+
+build:
+  number: 2
+  script:
+    - if: win
+      then: call "%RECIPE_DIR%\\build.bat"
+    - if: unix
+      then: bash "${RECIPE_DIR}/build.sh"
+
+requirements:
+  build:
+    - ${{ compiler("cxx") }}
+    - ${{ stdlib("c") }}
+    - cmake
+    - ninja
+    - if: unix
+      then: make
+    - if: build_platform != target_platform
+      then:
+        - cross-python_${{ target_platform }}
+        - pip
+        - python
+        - scikit-build-core >=0.11
+  host:
+    - pip
+    - python
+    - scikit-build-core >=0.11
+    - pybind11 >=2.10
+    - numpy
+    - if: win
+      then: cmake
+  run:
+    - numpy >=1.16.0
+    - python
+
+tests:
+  - python:
+      imports:
+        - fpsample
+  - script:
+      - pip check
+      - python run_test.py
+    files:
+      recipe:
+        - run_test.py
+    requirements:
+      run:
+        - pip
+        - python
+
+about:
+  homepage: https://github.com/leonardodalinky/fpsample
+  repository: https://github.com/leonardodalinky/fpsample
+  summary: Python efficient farthest point sampling (FPS) library
+  license: MIT
+  license_file:
+    - LICENSE
+
+extra:
+  recipe-maintainers:
+    - jeongseok-meta

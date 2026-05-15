@@ -9,6 +9,8 @@ Package license: MIT
 
 Summary: Python efficient farthest point sampling (FPS) library
 
+Development: https://github.com/leonardodalinky/fpsample
+
 Current build status
 ====================
 
