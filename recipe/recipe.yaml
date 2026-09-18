@@ -13,7 +13,7 @@ source:
   sha256: d734aac0873907f8d58aa07ae7336f0aecefb1338bdfd262831c80aeded75201
 
 build:
-  number: 2
+  number: 3
   script:
     - if: win
       then: call "%RECIPE_DIR%\\build.bat"
